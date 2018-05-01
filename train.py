@@ -1,22 +1,24 @@
 import os
-from chatterbot.trainers import ChatterBotCorpusTrainer
+# from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot.trainers import ListTrainer
 from chatterbot import ChatBot
 
 def train():
 	joeydash_bot = ChatBot(
-	    'JoeydashBot',
-	    filters=["chatterbot.filters.RepetitiveResponseFilter"]
+		'JoeydashBot',
+		filters=["chatterbot.filters.RepetitiveResponseFilter"]
 	)
 	# train basics
-    joeydash_bot.set_trainer(ChatterBotCorpusTrainer)
-    joeydash_bot.train(
-        "chatterbot.corpus.english"
-    )
-    # train my language
-    # joeydash_bot.set_trainer(chatterbot.trainers.ListTrainer)
-    # for filename in os.listdir('static/sample'):
-    #     chats = open('./static/sample/'+filename,'r').readlines()
-    #     joeydash_bot.train(chats)
+	# joeydash_bot.set_trainer(ChatterBotCorpusTrainer)
+	# joeydash_bot.train(
+	# 	"./sample/corpus_recomended/"
+	# 	)
+	# train my language
+	joeydash_bot.set_trainer(ListTrainer)
+	for filename in os.listdir('sample/untrained/'):
+		chats = open('./sample/untrained/'+filename,'r').readlines()
+		joeydash_bot.train(chats)
+		os.rename('./sample/untrained/'+filename,'r', './sample/already_trained/'+filename,'r')
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=3000)
+	train()
