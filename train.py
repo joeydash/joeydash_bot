@@ -18,7 +18,7 @@ def train():
 	for filename in os.listdir('sample/untrained/'):
 		chats = open('./sample/untrained/'+filename,'r').readlines()
 		joeydash_bot.train(chats)
-		os.rename('./sample/untrained/'+filename,'r', './sample/already_trained/'+filename,'r')
+		os.rename('./sample/untrained/'+filename, './sample/already_trained/'+filename)
 
 if __name__ == '__main__':
 	train()
