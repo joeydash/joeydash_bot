@@ -23,4 +23,4 @@ def get_bot_response():
         return str("I didn't get you")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000)
+    app.run(debug=False, host='0.0.0.0', port=3000)

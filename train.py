@@ -15,10 +15,9 @@ def train():
 	# 	)
 	# train my language
 	joeydash_bot.set_trainer(ListTrainer)
-	for filename in os.listdir('sample/untrained/'):
-		chats = open('./sample/untrained/'+filename,'r').readlines()
+	for filename in os.listdir('sample/un_trained/'):
+		chats = open('./sample/un_trained/'+filename,'r').readlines()
 		joeydash_bot.train(chats)
-		os.rename('./sample/untrained/'+filename, './sample/already_trained/'+filename)
 
 if __name__ == '__main__':
 	train()
