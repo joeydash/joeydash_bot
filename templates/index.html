@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
@@ -19,14 +19,14 @@
           <div class="chatbox__onlineDot"></div>
         </div>
         <div class="chatbox__button" v-on:click="colorPanelShown = !colorPanelShown"></div>
-        <!-- <span>
-          typing...
-        </span> -->
       </div>
       <div class="chatbox__messages">
         <div class="chatbox__messageBox" v-for="message in messages" :class="{&quot;chatbox__messageBox--primary&quot;: message.primary}">
           <div class="chatbox__message" :class="{&quot;chatbox__message--primary&quot;: message.primary}" :style="{background: message.primary ? chatColor:&quot;inital&quot;}"><%message.text%>
-            <div class="chatbox__tooltip chatbox__tooltip--left"><%message.date%></div>
+            <div class="chatbox__tooltip" :class="{
+            'chatbox__tooltip--right' : !message.primary,
+            'chatbox__tooltip--left' : message.primary,
+          }"><%message.date%></div>
           </div>
         </div>
       </div>
