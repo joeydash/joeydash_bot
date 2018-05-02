@@ -3,5 +3,3 @@
    WARNING: Do not use the development server in a production environment.
    Use a production WSGI server instead.
  * Debug mode: off
-----------------------------------------
-Exception happened during processing of request from ('127.0.0.1', 35410)
