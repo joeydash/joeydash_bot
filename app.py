@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request
-from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot import ChatBot
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 joeydash_bot = ChatBot(
-        'JoeydashBot',
-        filters=["chatterbot.filters.RepetitiveResponseFilter"]
-    )
+    'JoeydashBot',
+    filters=["chatterbot.filters.RepetitiveResponseFilter"]
+)
+
 
 @app.route("/")
 def home():
@@ -21,6 +21,7 @@ def get_bot_response():
         return str(joeydash_bot.get_response(userText))
     except Exception:
         return str("I didn't get you")
+
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=3000)
